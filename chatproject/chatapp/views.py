@@ -17,19 +17,43 @@ class ChangePassword(View):
     def post(self, request):
         pass
 
-class Logout(View):
-    def get(self, request):
-        return render(request, 'auth-logout.html')
-    def post(self, request):
-        pass
 
+# Logout operation
+def Logout(request):
+     auth.logout(request)
+     return render(request, 'auth-logout.html')
+
+
+# Login operation
 class Login(View):
     def get(self, request):
-        return render(request, 'auth-login.html')
+        current_user = request.user
+
+        if current_user.id:
+            messages.success(request, "Already logged in!")
+            return redirect('/')
+        else:
+            return render(request, 'auth-login.html')
     
     def post(self, request):
-        pass
+        username = request.POST.get('username')
+        password = request.POST.get("password")
 
+        user_login = auth.authenticate(
+            username=username, 
+            password=password)
+        
+        # Check if user exists otherwise throw exception
+        if user_login is not None:
+            auth.login(request, user_login)
+            messages.success(request, "Welcome back to Kooku!")
+            return redirect('/')
+        else:
+            messages.error(request, "Username or Password is incorrect")
+            return redirect('/auth-login')
+
+
+# Registration operations
 class Register(View):
     def get(self, request):
         return render(request, 'auth-register.html')
