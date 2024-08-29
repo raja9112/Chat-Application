@@ -26,6 +26,7 @@ class Logout(View):
 class Login(View):
     def get(self, request):
         return render(request, 'auth-login.html')
+    
     def post(self, request):
         pass
 
@@ -40,18 +41,30 @@ class Register(View):
         confirmpassword = request.POST.get('confirmpassword')
 
         if password == confirmpassword:
-            if User.objects.filter(username = username).exists():
-                messages.error(request, "Username already taken. Please try again")
-            creating_user = User.objects.create_user(username = username, email= email , password = confirmpassword)
-            creating_user.save()
+            # Check if username or email already exists
+            if User.objects.filter(username=username).exists():
+                messages.error(request, "Username already taken. Please try again.")
+                return redirect('/auth-register/')
+            elif User.objects.filter(email=email).exists():
+                messages.error(request, "Email already taken. Please try again.")
+                return redirect('/auth-register/')
+            else:
+                # Create user
+                creating_user = User.objects.create_user(
+                    username=username, 
+                    email=email, 
+                    password=password)
+                
+                creating_user.save()
 
-            auth.login(request, creating_user)
-            messages.success(request, "Welcome to Kooku, An App by Tea Kadai!")
-            return redirect('/')
-        
-        messages.info(request, "Password did not match")
-        return redirect('auth-register/')
-
+                # Log the user in
+                auth.login(request, creating_user)
+                messages.success(request, "Welcome to Kooku, an App by Tea Kadai!")
+                return redirect('/')
+        else:
+            messages.error(request, "Passwords did not match. Please try again.")
+            return redirect('/auth-register/')
+ 
 
 class Recover_password(View):
     def get(self, request):
