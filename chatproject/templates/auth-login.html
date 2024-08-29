@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!doctype html>
 <html lang="en">
 
@@ -5,20 +8,19 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Log in | Chaton - Responsive Bootstrap 5 Chat App</title>
+    <title>Log in | Kooku</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Chaton - Responsive Chat App Template in HTML. A fully featured HTML chat messenger template in Bootstrap 5" name="description" />
-    <meta name="keywords" content="Chaton chat template, chat, web chat template, chat status, chat template, communication, discussion, group chat, message, messenger template, status" />
-    <meta content="Themesdesign" name="author" />
+    <meta content="Kooku - A Real Time Chat Application Built With Python Django" name="description" />
+    <meta name="keywords" content="Kooku chat template, chat, web chat template, chat status, chat template, communication, discussion, group chat, message, messenger template, status" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" id="tabIcon">
+    <link rel="shortcut icon" href="{% static '/images/favicon.ico' %}" id="tabIcon">
 
     <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{% static '/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="{% static '/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{% static '/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -36,9 +38,9 @@
 
                                     <div class="text-center mb-5">
                                         <h3>Welcome Back !</h3>
-                                        <p class="text-muted">Sign in to continue to Chaton.</p>
+                                        <p class="text-muted">Sign in to continue to Kooku.</p>
                                     </div>
-                                    <form action="https://themesdesign.in/chaton/layouts/index.html">
+                                    <form action=" ">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="username" placeholder="Enter username">
@@ -46,7 +48,7 @@
 
                                         <div class="mb-3">
                                             <div class="float-end">
-                                                <a href="auth-recoverpw.html" class="text-muted">Forgot password?</a>
+                                                <a href="/auth-recoverpw/" class="text-muted">Forgot password?</a>
                                             </div>
                                             <label for="userpassword" class="form-label">Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
@@ -85,7 +87,7 @@
                                     </form><!-- end form -->
 
                                     <div class="mt-5 text-center text-muted">
-                                        <p>Don't have an account ? <a href="auth-register.html" class="fw-medium text-decoration-underline"> Register</a></p>
+                                        <p>Don't have an account ? <a href="/auth-register/" class="fw-medium text-decoration-underline"> Register</a></p>
                                     </div>
                                 </div>
                             </div><!-- end col -->
@@ -95,7 +97,7 @@
                             <div class="col-xl-12">
                                 <div class="text-center text-muted p-4">
                                     <p class="mb-0">&copy;
-                                        <script>document.write(new Date().getFullYear())</script> Chaton. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                                        <script>document.write(new Date().getFullYear())</script> Kooku. Crafted with <i class="mdi mdi-heart text-danger"></i> by Tea Kadai
                                     </p>
                                 </div>
                             </div><!-- end col -->
@@ -113,16 +115,16 @@
 <!-- end auth bg -->
 
 <!-- JAVASCRIPT -->
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="{% static '/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static '/libs/node-waves/waves.min.js' %}"></script>
 <!-- password addon -->
-<script src="assets/js/pages/password-addon.init.js"></script>
+<script src="{% static '/js/pages/password-addon.init.js' %}"></script>
 
 <!-- theme-style init -->
-<script src="assets/js/pages/theme-style.init.js"></script>
+<script src="{% static '/js/pages/theme-style.init.js' %}"></script>
 
-<script src="assets/js/app.js"></script>
+<script src="{% static '/js/app.js' %}"></script>
 
 </body>
 
