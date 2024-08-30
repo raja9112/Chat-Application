@@ -8,8 +8,6 @@ urlpatterns = [
     path('auth-logout/', views.Logout, name= "Logout page"),
     path('auth-login/', Login.as_view(), name="Login page"),
     path('auth-register/', Register.as_view(), name="Registration page"),
-    path('auth-recoverpw/', Recover_password.as_view(), name="Forget password page")
-
-
-    
+    path('auth-recoverpw/', Recover_password.as_view(), name="Forget password page"),
+    path('password-reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
 ]
